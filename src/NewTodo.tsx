@@ -10,9 +10,6 @@ const NewTodo = () => {
     mutationFn: createTODO,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["todos"] });
-      console.log("====================================");
-      console.log("Todo添加成功");
-      console.log("====================================");
       setNewTodo("");
     },
   });
@@ -20,19 +17,24 @@ const NewTodo = () => {
     e.preventDefault();
     createTodoMutation.mutate({
       title: newTodo,
-      finished: false,
     });
   };
   return (
-    <form onSubmit={handleSubmit} className="todo-form">
+    <form
+      onSubmit={handleSubmit}
+      className="todo-form w-full flex items-center justify-center gap-4"
+    >
       <input
         type="text"
         value={newTodo}
         onChange={(e) => setNewTodo(e.target.value)}
         placeholder="Add a new todo"
-        className="todo-input"
+        className="todo-input p-2 rounded-md border-2 border-gray-300 flex-1"
       />
-      <button type="submit" className="add-button">
+      <button
+        type="submit"
+        className="add-button p-2 px-6 border-gray-300 border-2 bg-slate-100 rounded-md"
+      >
         Add Todo
       </button>
     </form>

@@ -8,9 +8,11 @@ export type TODO = {
 };
 
 export async function getTodos(): Promise<TODO[]> {
-  const { data: todos, error } = await supabase.from("todos").select("*");
+  const { data: todos, error } = await supabase
+    .from("todos")
+    .select("*")
+    .order("created_at", { ascending: false });
   if (error) {
-    console.error("Error fetching todos:", error);
     throw error;
   }
   return todos;
@@ -22,7 +24,6 @@ export async function createTODO(todo: Partial<TODO>): Promise<TODO> {
     .insert(todo)
     .single();
   if (error) {
-    console.error("Error creating todo:", error);
     throw error;
   }
   return newTODO;
