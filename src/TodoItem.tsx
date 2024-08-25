@@ -80,18 +80,18 @@ const TodoItem = ({ todo }: TodoItemProps) => {
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 mb-4 flex flex-col justify-between">
+    <div className="bg-white shadow-md rounded-lg p-4 mb-4 flex flex-col justify-between hover:cursor-pointer">
       <div className="flex items-center justify-center">
-        <div className="flex items-center mr-auto">
+        <div className="flex items-center flex-1">
           <input
             disabled={isEditing}
             type="checkbox"
             checked={isFinished}
             onChange={handleToggleChecked}
-            className="form-checkbox h-5 w-5 text-blue-600"
+            className="form-checkbox h-5 w-5 text-blue-600 mr-2"
           />
           <span
-            className={`ml-3 ${isFinished ? "line-through text-gray-500" : "text-gray-800"}`}
+            className={`${isFinished ? "line-through text-gray-500 flex-1 mr-2" : "text-gray-800 flex-1 mr-2"}`}
           >
             {isEditing ? (
               <input
@@ -99,9 +99,10 @@ const TodoItem = ({ todo }: TodoItemProps) => {
                 type="text"
                 value={title}
                 onChange={handleTodoTitleChange}
+                className="px-2 rounded-md outline-none focus:border focus:border-gray-300"
               />
             ) : (
-              <p>{todo.title}</p>
+              <p className="p-1 rounded-md border border-white">{todo.title}</p>
             )}
           </span>
         </div>
@@ -114,24 +115,29 @@ const TodoItem = ({ todo }: TodoItemProps) => {
             >
               {updateTodoMutation.isPending ? (
                 <svg
-                  className="animate-spin h-5 w-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
+                  className="h-5 w-5"
                   xmlns="http://www.w3.org/2000/svg"
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 24 24"
                 >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
                   <path
-                    className="opacity-75"
                     fill="currentColor"
-                    d="M4 12a8 8 0 018-8v3.25a4.75 4.75 0 100 9.5V20a8 8 0 01-8-8z"
-                  ></path>
+                    d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
+                    opacity="0.25"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z"
+                  >
+                    <animateTransform
+                      attributeName="transform"
+                      dur="0.75s"
+                      repeatCount="indefinite"
+                      type="rotate"
+                      values="0 12 12;360 12 12"
+                    />
+                  </path>
                 </svg>
               ) : (
                 <svg
@@ -171,7 +177,7 @@ const TodoItem = ({ todo }: TodoItemProps) => {
             </button>
           </div>
         ) : (
-          <div>
+          <div className="">
             <button
               onClick={handleEdit}
               className="bg-white-500 hover:bg-gray-200 text-gray-500 font-bold py-2 px-2 rounded border border-black-300"
@@ -193,24 +199,29 @@ const TodoItem = ({ todo }: TodoItemProps) => {
             >
               {deleteTodoMutation.isPending ? (
                 <svg
-                  className="animate-spin h-5 w-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
+                  className="h-5 w-5"
                   xmlns="http://www.w3.org/2000/svg"
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 24 24"
                 >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
                   <path
-                    className="opacity-75"
                     fill="currentColor"
-                    d="M4 12a8 8 0 018-8v3.25a4.75 4.75 0 100 9.5V20a8 8 0 01-8-8z"
-                  ></path>
+                    d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
+                    opacity="0.25"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z"
+                  >
+                    <animateTransform
+                      attributeName="transform"
+                      dur="0.75s"
+                      repeatCount="indefinite"
+                      type="rotate"
+                      values="0 12 12;360 12 12"
+                    />
+                  </path>
                 </svg>
               ) : (
                 <svg

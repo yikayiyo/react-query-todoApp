@@ -29,7 +29,7 @@ const NewTodo = () => {
         value={newTodo}
         onChange={(e) => setNewTodo(e.target.value)}
         placeholder="Add a new todo"
-        className="todo-input p-2 rounded-md border-2 border-gray-300 flex-1"
+        className="todo-input p-2 rounded-md border-2 focus:border-gray-300 flex-1 outline-none"
       />
       <button
         type="submit"
